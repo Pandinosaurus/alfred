@@ -34,5 +34,6 @@ from .fusion import *
 from .utils.log import logger
 # from .dl.torch.common import device
 from .utils.progress import pbar, prange
+from .version import __version__, short_version, version_info
 
 globals().update(importlib.import_module("alfred").__dict__)

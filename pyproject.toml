@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "alfred-py"
+version = "3.1.1"
+description = "Alfred is a DeepLearning utility library."
+readme = "README.md"
+readme-content-type = "text/markdown"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Lucas Jin", email = "jinfagang19@163.com"}
+]
+keywords = ["deep learning", "script helper", "tools"]
+classifiers = [
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+requires-python = ">=3.6"
+dependencies = [
+    "colorama",
+    "natsort",
+    "requests",
+    "regex",
+    "funcy",
+    "pascal-voc-writer",
+    "markdown",
+    "future",
+    "deprecated",
+    "loguru",
+    "pyquaternion",
+    "jsons",
+    "gtrending",
+    "xdg",
+    "portalocker",
+    "rich",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "isort",
+    "flake8",
+    "mypy",
+]
+coco = [
+    "pycocotools",
+]
+vision = [
+    "opencv-python",
+    "lxml",
+]
+
+[project.scripts]
+alfred = "alfred.alfred:main"
+a = "alfred.alfred:main"
+
+[project.urls]
+Homepage = "https://github.com/jinfagang/alfred"
+Documentation = "https://github.com/jinfagang/alfred#readme"
+Repository = "https://github.com/jinfagang/alfred.git"
+Issues = "https://github.com/jinfagang/alfred/issues"
+
+[tool.setuptools]
+packages = ["alfred", "alfred.modules", "alfred.modules.data", "alfred.modules.cabinet", "alfred.modules.cabinet.mdparse", "alfred.modules.cabinet.mdparse.formatters", "alfred.modules.cabinet.mdparse.transformers", "alfred.modules.cabinet.mdparse.transformers.html", "alfred.modules.cabinet.mdparse.transformers.md", "alfred.modules.cabinet.templates", "alfred.modules.scrap", "alfred.modules.vision", "alfred.modules.visual", "alfred.modules.tensorrt", "alfred.modules.cli", "alfred.modules.dltool", "alfred.modules.dltool.torch", "alfred.modules.dltool.torch.autograd", "alfred.modules.dltool.torch.nn", "alfred.modules.dltool.torch.optim", "alfred.modules.dltool.torch.utils", "alfred.vis", "alfred.vis.image", "alfred.vis.image.pose_datasets", "alfred.vis.mesh3d", "alfred.vis.mesh3d.assets", "alfred.vis.pointcloud", "alfred.vis.renders", "alfred.fusion", "alfred.fusion.models", "alfred.utils", "alfred.utils.log", "alfred.utils.misc"]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["alfred*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py36', 'py37', 'py38', 'py39', 'py310']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
